@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  postgres-db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: testUser
+      POSTGRES_DB: test
+    volumes:
+      - ./sql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    ports:
+      - "5432:5432"
+  spring-webflux-api:
+    image: mattbriden/spring-webflux-api
+    ports:
+      - "8090:8080"
+    environment:
+      R2DBC_USER: testUser
+      R2DBC_PASS: password
+      R2DBC_URL: r2dbc:postgresql://postgres-db:5432/test
+  start_db:
+    image: dadarek/wait-for-dependencies
+    depends_on:
+      - "postgres-db"
+    command: postgres-db:5432

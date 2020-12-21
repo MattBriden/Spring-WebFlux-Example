@@ -1,0 +1,2 @@
+uuid
+psycopg2-binary
