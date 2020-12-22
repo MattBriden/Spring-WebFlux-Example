@@ -4,6 +4,7 @@ import random
 
 
 sql = """INSERT INTO animal(id, name, kingdom) VALUES(%s, %s, %s);"""
+num_entries = 10
 animals = {
     'Dog': 'Vertebrate',
     'Cat': 'Vertebrate',
@@ -24,7 +25,7 @@ def bulk_insert():
 
         cursor = conn.cursor()
 
-        for i in range(10):
+        for i in range(num_entries):
             uid = str(uuid.uuid4())
             animal, kingdom = random.choice(list(animals.items()))
             cursor.execute(sql, (uid, animal, kingdom))
