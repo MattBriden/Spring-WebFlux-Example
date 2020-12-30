@@ -4,7 +4,7 @@ This project is an example of how to use Spring WebFlux to create a reactive RES
 ## Build
 Build the jar and docker image.
 ```
-Spring-WebFlux-Example $ mvn clean install -Dmaven.test.skip=true
+Spring-WebFlux-Example $ mvn clean install
 Spring-WebFlux-Example $ docker build -t mattbriden/spring-webflux-api .
 ```
 
