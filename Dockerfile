@@ -1,4 +1,4 @@
-FROM wombatsecurity/java8:8u192
+FROM azul/zulu-openjdk-alpine:8u252
 
 # Maintainer
 MAINTAINER "Matt Briden"
